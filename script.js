@@ -1,6 +1,7 @@
 const openModalButton = document.querySelectorAll('[data-modal-target]')
 const overlay = document.querySelector('[data-close-area]')
 
+// MODAL FEATURE - POP-UP
 openModalButton.forEach(button => {
     button.addEventListener('click', () => {
         const modal = document.querySelector(button.dataset.modalTarget)
@@ -26,6 +27,17 @@ function closeModal(modal) {
     overlay.classList.remove('active')
 }
 
+// BOOK FEATURES - READINIG STATUS AND REMOVE BOOK
+const readStatusBtn = document.querySelectorAll('.readingStatusBtn')
+const removeBtn = document.querySelector('.removeBtn')
+
+readStatusBtn.forEach(button => {
+    button.addEventListener('click', () => {
+        button.classList.toggle('notRead')
+    })
+})
+
+
 
 let myLibrary = []
 
@@ -45,7 +57,12 @@ function addBookToLibrary(book) {
 }
  
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, 'not read yet')
+
+console.log(myLibrary)
 // theHobbit.info()
 // console.log(theHobbit.title)
+
+
+
 
 
