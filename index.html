@@ -5,21 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library Application</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
+    <!-- PROMPT -->
+    <!-- <div class="addBookPrompt">
+      <form class="new-book-prompt">
+        <p class="newBookHeader">New Book</p>
+        <input type="text" name="" id="" placeholder="Title" required />
+        <input type="text" name="" id="" placeholder="Author" required />
+        <input type="number" name="" id="" placeholder="Pages" required />
+        <div id="reading-status">
+          <p>Read it?</p>
+          <input type="checkbox" name="" id="" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div> -->
+
     <div class="header">
-      <p>Book Shelf</p>
+      <p class="logo">My Book Shelf</p>
     </div>
     <div class="main">
-      <button id="new-book-button">Add New Book</button>
-      <div class="card">
-        <p>Title</p>
-        <p>Author</p>
-        <p>Pages</p>
-        <button class="readingStatusBtn">Read</button>
-        <button class="removeBtn">Remove</button>
+      <button id="new-book-button" type="button">Add New Book</button>
+      <div class="card-section">
+        <div class="card">
+          <p id="title">The Hobbit</p>
+          <p id="author">J.R.R Tolkien</p>
+          <p id="pages">200 pages</p>
+          <button class="readingStatusBtn"></button>
+          <button class="removeBtn">
+            <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              version="1.1"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </body>
