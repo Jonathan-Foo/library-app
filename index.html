@@ -16,25 +16,36 @@
   </head>
   <body>
     <!-- PROMPT -->
-    <!-- <div class="addBookPrompt">
-      <form class="new-book-prompt">
+    <div class="addBookPrompt">
+      <span data-close-area class="overlay"></span>
+      <form class="new-book-prompt" id="modal">
         <p class="newBookHeader">New Book</p>
         <input type="text" name="" id="" placeholder="Title" required />
         <input type="text" name="" id="" placeholder="Author" required />
-        <input type="number" name="" id="" placeholder="Pages" required />
+        <input
+          type="number"
+          name=""
+          id=""
+          placeholder="Pages"
+          min="0"
+          required
+        />
         <div id="reading-status">
           <p>Read it?</p>
           <input type="checkbox" name="" id="" />
         </div>
         <button type="submit">Submit</button>
       </form>
-    </div> -->
+    </div>
 
+    <!-- MAIN PAGE -->
     <div class="header">
       <p class="logo">My Book Shelf</p>
     </div>
     <div class="main">
-      <button id="new-book-button" type="button">Add New Book</button>
+      <button data-modal-target="#modal" id="new-book-button" type="button">
+        Add New Book
+      </button>
       <div class="card-section">
         <div class="card">
           <p id="title">The Hobbit</p>
