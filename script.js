@@ -5,7 +5,6 @@ const overlay = document.querySelector('[data-close-area]')
 openModalButton.forEach(button => {
     button.addEventListener('click', () => {
         const modal = document.querySelector(button.dataset.modalTarget)
-        
         openModal(modal)
     })
 })
@@ -121,7 +120,7 @@ function displayBook(arr) {
         
 }
 
-
+// FUNCTION TRIGGERED WHEN USER SUBMIT MODAL INFO
 
 function addNewBook() {
     const cardSection = document.querySelector('.card-section')
@@ -136,10 +135,6 @@ function addNewBook() {
         return  
     }
 }
-
-
-
-
 
 submitBtn.addEventListener('click', () => addNewBook())
 
