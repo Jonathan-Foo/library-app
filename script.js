@@ -1,10 +1,11 @@
+// MODAL FEATURE - POP-UP
 const openModalButton = document.querySelectorAll('[data-modal-target]')
 const overlay = document.querySelector('[data-close-area]')
 
-// MODAL FEATURE - POP-UP
 openModalButton.forEach(button => {
     button.addEventListener('click', () => {
         const modal = document.querySelector(button.dataset.modalTarget)
+        
         openModal(modal)
     })
 })
@@ -25,6 +26,12 @@ function closeModal(modal) {
     if (modal == null) return
     modal.classList.remove('active')
     overlay.classList.remove('active')
+    clearModal()
+}
+
+function clearModal() {
+    const inputs = [...modal.querySelectorAll('input')]
+    inputs.forEach(input => input.value = '')
 }
 
 // BOOK FEATURES - READINIG STATUS AND REMOVE BOOK
@@ -41,12 +48,6 @@ readStatusBtn.forEach(button => {
 const modal = document.querySelector('.new-book-prompt')
 const inputs = [...modal.querySelectorAll('input')]
 const submitBtn = modal.querySelector('button')
-
-console.log(submitBtn)
-console.log(inputs)
-console.log(inputs.map(function(input) { 
-    return input.type === 'checkbox' ? input.checked : input.value})
-    .join(', '))
 
 let myLibrary = []
 
@@ -69,10 +70,6 @@ Book.prototype.info = function() {
 function addBookToLibrary(book) {
     return myLibrary.push(book)
 }
- 
-// const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, 'not read yet')
-// addBookToLibrary(theHobbit)
-
 
 
 // FUNCTION FOR LOOPING ARRAY AND DISPLAYING NEW BOOKS
@@ -102,7 +99,7 @@ function displayBook(arr) {
             />
           </svg>
         </button>
-      </div>; `
+      </div>`
 
     return cardSection.innerHTML += card
 
@@ -111,20 +108,26 @@ function displayBook(arr) {
 }
 
 
+console.log(inputs.map(input => input.validity.valid))
+
 function addNewBook() {
     const cardSection = document.querySelector('.card-section')
-    const inputs = [...modal.querySelectorAll('input')]
     let newBookInfo = inputs.map(function(input) {return input.type === 'checkbox' ? input.checked : input.value})
-    console.log(newBookInfo)
+    if (inputs.every(input => input.validity.valid !== false)) {
         addBookToLibrary(new Book(...newBookInfo))
         cardSection.innerHTML = ''
         displayBook(myLibrary)
         closeModal(modal)
-    
+    } else {
+        modal.reportValidity()
+        return  
+    }
 }
 
-console.log(myLibrary)
-submitBtn.addEventListener('click', addNewBook)
+
+
+
+submitBtn.addEventListener('click', () => addNewBook())
 
 
 
