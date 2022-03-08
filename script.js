@@ -35,14 +35,28 @@ function clearModal() {
 }
 
 // BOOK FEATURES - READINIG STATUS AND REMOVE BOOK
-const readStatusBtn = document.querySelectorAll('.readingStatusBtn')
-const removeBtn = document.querySelector('.removeBtn')
 
-readStatusBtn.forEach(button => {
-    button.addEventListener('click', () => {
-        button.classList.toggle('notRead')
+function removeBook() {
+    const cardSection = document.querySelector('.card-section')
+    const removeBtn = document.querySelectorAll('.removeBtn')
+    removeBtn.forEach(button => {
+        button.addEventListener('click', () => {
+            let index = parseInt(button.dataset.removeTarget)
+            myLibrary.splice(index, 1)
+            cardSection.innerHTML = ''
+            displayBook(myLibrary)
+        })
     })
-})
+}
+
+function toggleColor() {
+    const readStatusBtn = document.querySelectorAll('.readingStatusBtn')
+    readStatusBtn.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('notRead')
+        })
+    })
+}
 
 // FORM
 const modal = document.querySelector('.new-book-prompt')
@@ -77,14 +91,14 @@ function addBookToLibrary(book) {
 function displayBook(arr) {
     const cardSection = document.querySelector('.card-section')
     
-    arr.forEach(obj => {
+    arr.forEach((obj, index) => {
         let card = 
         `<div class="card">
         <p id="title">${obj.title}</p>
         <p id="author">${obj.author}</p>
         <p id="pages">${obj.numberOfPages} pages</p>
-        <button class="readingStatusBtn ${obj.readingStatus}"></button>
-        <button class="removeBtn">
+        <button onclick="toggleColor()" class="readingStatusBtn ${obj.readingStatus}"></button>
+        <button onclick="removeBook()" data-remove-target='${index}' class="removeBtn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -108,7 +122,6 @@ function displayBook(arr) {
 }
 
 
-console.log(inputs.map(input => input.validity.valid))
 
 function addNewBook() {
     const cardSection = document.querySelector('.card-section')
@@ -123,6 +136,7 @@ function addNewBook() {
         return  
     }
 }
+
 
 
 
